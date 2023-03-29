@@ -1,18 +1,40 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import axios from "axios";
 import CardContact from "../components/Card.vue";
-onMounted(async () => {});
+const contacts = ref({
+  cid: "",
+  firstname: "",
+  lastname: "",
+  mobile: "",
+  email: "",
+  facebook: "",
+  imageUrl: "",
+});
+onMounted(async () => {
+  const url = "http://127.0.0.1:5001/contacts";
+  axios
+    .get(url)
+    .then((response) => {
+      console.log(response.data);
+      contacts.value = response.data;
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+});
 </script>
 <template>
-  <div>
+  <div class="ui link cards">
     <CardContact
-      firstname="Konlawat"
-      lastname="Khathaphet"
-      mobile="0936941111"
-      email="pep.konlawat@gmail.com"
-      facebook="Pep Konlawat"
-      imageUrl="https://semantic-ui.com/images/avatar2/large/elyse.png"
+      v-for="(contact, index) in contacts"
+      :key="contact.cid"
+      :firstname="contact.firstname"
+      :lastname="contact.lastname"
+      :mobile="contact.mobile"
+      :email="contact.email"
+      :facebook="contact.facebook"
+      :imageUrl="contact.imageUrl"
     />
   </div>
 </template>
