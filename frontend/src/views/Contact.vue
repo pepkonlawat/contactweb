@@ -25,7 +25,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="ui link cards">
+  <div id="card-box" class="ui segment link cards">
     <CardContact
       v-for="(contact, index) in contacts"
       :key="contact.cid"
@@ -38,3 +38,10 @@ onMounted(async () => {
     />
   </div>
 </template>
+<style>
+#card-box {
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+}
+</style>
