@@ -1,16 +1,26 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  firstname: String,
+  lastname: String,
+  mobile: String,
+  email: String,
+  facebook: String,
+  imageUrl: String,
+});
+</script>
 <template>
   <div class="ui card">
     <div class="image">
-      <img src="../assets/kristy.png" />
+      <img :src="props.imageUrl" />
+      <!-- ../assets/kristy.png -->
     </div>
     <div class="content">
-      <div class="header">Matt Giampietro</div>
+      <div class="header">{{ props.firstname }} {{ props.lastname }}</div>
 
       <div class="description">
-        <div>Mobile: {{ mobile }}</div>
-        <div>Email: {{ email }}</div>
-        <div>Facebook: {{ facebook }}</div>
+        <div>Mobile: {{ props.mobile }}</div>
+        <div>Email: {{ props.email }}</div>
+        <div>Facebook: {{ props.facebook }}</div>
       </div>
     </div>
 
