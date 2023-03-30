@@ -1,16 +1,9 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import axios from "axios";
 import CardContact from "../components/Card.vue";
-const contacts = ref({
-  cid: "",
-  firstname: "",
-  lastname: "",
-  mobile: "",
-  email: "",
-  facebook: "",
-  imageUrl: "",
-});
+import Search from "../components/Search.vue";
+const contacts = ref([]);
 onMounted(async () => {
   const url = "http://127.0.0.1:5001/contacts";
   axios
@@ -23,11 +16,22 @@ onMounted(async () => {
       console.log(error.message);
     });
 });
+const searchInput = ref("");
+function handleSearch(term) {
+  searchInput.value = term;
+}
+const filteredList = computed(() => {
+  return contacts.value.filter((item) =>
+    item.firstname.toLowerCase().includes(searchInput.value.toLowerCase())
+  );
+});
 </script>
 <template>
+  <Search @search="handleSearch" />
+
   <div id="card-box" class="ui segment link cards">
     <CardContact
-      v-for="(contact, index) in contacts"
+      v-for="contact in filteredList"
       :key="contact.cid"
       :firstname="contact.firstname"
       :lastname="contact.lastname"
