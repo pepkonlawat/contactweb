@@ -25,9 +25,11 @@ const props = defineProps({
     </div>
 
     <div class="extra content">
-      <button class="ui blue icon button">
-        <i class="edit icon"></i>
-      </button>
+      <router-link to="/EditContact">
+        <button class="ui blue icon button">
+          <i class="edit icon"></i>
+        </button>
+      </router-link>
       <button class="ui red icon button">
         <i class="trash alternate icon"></i>
       </button>

@@ -4,6 +4,7 @@ import Contact from "../views/Contact.vue";
 import NewContact from "../views/NewContact.vue";
 import AuthLayout from "../layouts/AuthLayout.vue";
 import ContentLayout from "../layouts/ContentLayout.vue";
+import EditContact from "../views/EditContact.vue";
 const routes = [
   {
     path: "/",
@@ -22,6 +23,10 @@ const routes = [
       {
         path: "NewContact",
         component: NewContact,
+      },
+      {
+        path: "EditContact",
+        component: EditContact,
       },
     ],
   },

@@ -11,7 +11,7 @@ var ContactSchema = new Schema({
   facebook: { type: String },
   imageUrl: {
     type: String,
-    default: "https://nightswinger.github.io/vue-fomantic-ui/views/card",
+    default: "https://semantic-ui.com/images/avatar2/large/elyse.png",
   },
 });
 module.exports = mongoose.model("Contacts", ContactSchema);
