@@ -11,7 +11,7 @@ const cors = require("cors");
 port = process.env.PORT || 5001;
 Contact = require("./models/contactModel");
 mongoose.Promise = global.Promise;
-url = "mongodb://127.0.0.1/ContactList";
+url = "mongodb+srv://pepkonlawat:nCj0iQmuawWrCwOC@pepcluster0.b4qorue.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(url, function (error) {
   if (error) throw error;
   console.log("Successfully connnected");
