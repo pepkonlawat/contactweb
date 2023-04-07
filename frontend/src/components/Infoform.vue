@@ -9,13 +9,12 @@ const formInput = ref({
   facebook: "",
   imageUrl: "",
 });
-const emit = defineEmits(["getFrom"]);
+const emit = defineEmits(["getForm"]);
 function getForm() {
-  emit("getFrom", formInput.value);
+  emit("getForm", formInput.value);
 }
 </script>
 <template>
-  {{ formInput }}
   <div class="ui divider"></div>
   <form class="ui form">
     <div class="field required">

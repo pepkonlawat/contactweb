@@ -1,12 +1,13 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 import Infoform from "../components/Infoform.vue";
-const dataInForm = ref({});
-function addNewContact() {
-  var url = "http://127.0.0.1:5001/Contacts";
+const formInput = ref({});
+function handleForm(term) {
+  formInput.value = term;
+  var url = "http://127.0.0.1:5001/contacts";
   axios
-    .post(url, dataInForm.value)
+    .post(url, formInput.value)
     .then((response) => {
       console.log(response);
     })
@@ -21,7 +22,8 @@ function addNewContact() {
       Contact
       <a class="ui teal label">Add</a>
     </h2>
-    <Infoform />
+    {{ formInput }}
+    <Infoform @getForm="handleForm" />
   </div>
 </template>
 <style scoped></style>
