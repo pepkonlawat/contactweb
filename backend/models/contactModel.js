@@ -12,5 +12,5 @@ var ContactSchema = new Schema({
   imageUrl: {
     type: String,
   },
-});
+},{ collection: 'Contacts' });
 module.exports = mongoose.model("Contacts", ContactSchema);

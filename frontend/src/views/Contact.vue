@@ -25,7 +25,6 @@ const filteredList = computed(() => {
     item.firstname.toLowerCase().includes(searchInput.value.toLowerCase())
   );
 });
-s;
 </script>
 <template>
   <Search @search="handleSearch" />
